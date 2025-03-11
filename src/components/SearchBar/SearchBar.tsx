@@ -1,15 +1,19 @@
-import { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import toast from "react-hot-toast";
 import s from "./SearchBar.module.css";
 
-const SearchBar = ({ request }) => {
-  const [query, setQuery] = useState("");
+interface SearchProps {
+  request: (query: string) => void; // Функція, що приймає query як рядок
+}
 
-  const handleQuery = (evt) => {
+const SearchBar = ({ request }: SearchProps) => {
+  const [query, setQuery] = useState<string>("");
+
+  const handleQuery = (evt: ChangeEvent<HTMLInputElement>) => {
     setQuery(evt.target.value.trim());
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (!query) {
       toast("I'm waiting for your request", {
