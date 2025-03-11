@@ -1,15 +1,8 @@
 import { ImageData } from "../App/App";
 import s from "./ImageCard.module.css";
 
-export interface ExtendedImageData extends ImageData {
-  urls: {
-    regular: string;
-  };
-  alt_description: string;
-}
-
 interface PropsImgCard {
-  hit: ExtendedImageData;
+  hit: ImageData;
   onImageClick: (imageUrl: string) => void;
 }
 

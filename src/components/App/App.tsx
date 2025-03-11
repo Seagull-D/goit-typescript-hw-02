@@ -15,8 +15,12 @@ export interface ImageData {
   webformatURL: string;
   largeImageURL: string;
   tags: string;
+  urls: {
+    regular: string;
+  };
+  alt_description: string;
 }
-export type FetchResponse = ImageData[];
+
 const App = () => {
   const [hits, setHits] = useState<ImageData[]>([]);
   const [query, setQuery] = useState<string>("");
@@ -35,7 +39,7 @@ const App = () => {
       setIsError(false);
 
       try {
-        const data: FetchResponse = await fetchPictures(query, page);
+        const data: ImageData[] = await fetchPictures(query, page);
         if (data.length === 0) {
           toast.error("No images found for this request! 😕", {
             style: {

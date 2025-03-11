@@ -1,8 +1,9 @@
-import ImageCard, { ExtendedImageData } from "../ImageCard/ImageCard";
+import { ImageData } from "../App/App";
+import ImageCard from "../ImageCard/ImageCard";
 import s from "./ImageGallery.module.css";
 
 interface PropsImageGallery {
-  hitsArrey: ExtendedImageData[];
+  hitsArrey: ImageData[];
   onImageClick: (imageUrl: string) => void;
 }
 
@@ -13,7 +14,7 @@ const ImageGallery = ({
   return (
     <div>
       <ul className={s.imageGallery}>
-        {hitsArrey.map((hit: ExtendedImageData) => (
+        {hitsArrey.map((hit: ImageData) => (
           <li key={hit.id}>
             <ImageCard hit={hit} onImageClick={onImageClick} />
           </li>
